@@ -31,9 +31,9 @@ class City:
     @property
     def name(self):
         return self.__name
-    def region_name(self):
+    def region(self):
         return self.__region
-    def country_name(self):
+    def country(self):
         return self.__country
     def city_population(self):
         return self.__city_population
