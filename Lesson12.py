@@ -24,7 +24,7 @@ class City:
         self.__name = name
         self.__region = region
         self.__country = country
-        self.__population = city_population
+        self.__city_population = city_population
         self.__postal_code = postal_code
         self.__phone_code = phone_code
 
@@ -50,13 +50,13 @@ class City:
             print("Incorrect number!")
     def show_info(self):
         print(f"Name: {self.__name} ")
-        print(f"Region: {self.region_name}")
-        print(f"Country: {self.country_name}")
-        print(f"City: {self.city_population}")
-        print(f"Postal code: {self.postal_code}")
-        print(f"Phone code: {self.phone_code}")
+        print(f"Region: {self.__region}")
+        print(f"Country: {self.__country}")
+        print(f"City population: {self.__city_population}")
+        print(f"Postal code: {self.__postal_code}")
+        print(f"Phone code: {self.__phone_code}")
 
-Odesa = City("Odesa", "Odesa City", "Ukraine", 1010000, "65000", "+380")
+Odesa = City("Odesa", "Odesa City", "Ukraine", 1010000, 65000, 380)
 Odesa.show_info()
 
 
