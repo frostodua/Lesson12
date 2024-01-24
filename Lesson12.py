@@ -31,20 +31,30 @@ class City:
     @property
     def name(self):
         return self.__name
+
+    @property
     def region(self):
         return self.__region
+
+    @property
     def country(self):
         return self.__country
+
+    @property
     def city_population(self):
         return self.__city_population
+
+    @property
     def postal_code(self):
         return self.__postal_code
+
+    @property
     def phone_code(self):
         return self.__phone_code
 
     @city_population.setter
     def city_population(self, city_population):
-        if 0 < city_population:
+        if city_population > 0:
             self.__city_population = city_population
         else:
             print("Incorrect number!")
