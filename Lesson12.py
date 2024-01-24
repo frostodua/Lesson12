@@ -74,3 +74,59 @@ Odesa.show_info()
 # кількість жителів країни, телефонний код країни, назву столиці, назву міст країни.
 # Реалізуйте доступ до окремих полів (Інкапсуляція).
 
+class Country:
+    __name_country: str = "no name"
+    __continent: str = "no continent"
+    __population: int = 0
+    __phone_code: int = 0
+    __capital: str = "no capital"
+    __cities: str = "no cities"
+    def __init__(self, name_country, continent, population, phone_code, capital, cities):
+        self.__name_country = name_country
+        self.__continent = continent
+        self.__population = population
+        self.__phone_code = phone_code
+        self.__capital = capital
+        self.__cities = cities
+
+    @property
+    def name_country(self):
+        return self.__name_country
+
+    @property
+    def continent(self):
+        return self.__continent
+
+    @property
+    def population(self):
+        return self.__population
+
+    @property
+    def phone_code(self):
+        return self.__phone_code
+
+    @property
+    def capital(self):
+        return self.__capital
+
+    @property
+    def cities(self):
+        return self.__cities
+
+    @population.setter
+    def population(self, population):
+        if population > 0:
+            self.__population = population
+        else:
+            print("Incorrect number!")
+    def show_info(self):
+        print(f"Name: {self.__name_country} ")
+        print(f"Сontinent: {self.__continent}")
+        print(f"Population: {self.__population}")
+        print(f"Phone_code: {self.__phone_code}")
+        print(f"Capital: {self.__capital}")
+        print(f"Cities: {self.__cities}")
+
+Ukraine = Country("Ukraine", "Eurasia", 37419084, 380, Kyiv, Odesa)
+# https://www.worldometers.info/world-population/ukraine-population/
+Ukraine.show_info()
