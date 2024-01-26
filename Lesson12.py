@@ -84,7 +84,7 @@ class Country:
     def __init__(self, name_country, continent, population, phone_code, capital, cities):
         self.__name_country = name_country
         self.__continent = continent
-        self.__population = population
+        self.population = population
         self.__phone_code = phone_code
         self.__capital = capital
         self.__cities = cities
@@ -126,7 +126,7 @@ class Country:
         print(f"Phone_code: {self.__phone_code}")
         print(f"Capital: {self.__capital}")
         print(f"Cities: {self.__cities}")
-
+Kyiv = City("Kyiv", "Kyiv City", "Ukraine", 2884000, 1000, 380)
 Ukraine = Country("Ukraine", "Eurasia", 37419084, 380, Kyiv, Odesa)
-# https://www.worldometers.info/world-population/ukraine-population/
+
 Ukraine.show_info()
