@@ -24,7 +24,7 @@ class City:
         self.__name = name
         self.__region = region
         self.__country = country
-        self.__city_population = city_population
+        self.city_population = city_population
         self.__postal_code = postal_code
         self.__phone_code = phone_code
 
@@ -59,15 +59,11 @@ class City:
         else:
             print("Incorrect number!")
     def show_info(self):
-        print(f"Name: {self.__name} ")
-        print(f"Region: {self.__region}")
-        print(f"Country: {self.__country}")
-        print(f"City population: {self.__city_population}")
-        print(f"Postal code: {self.__postal_code}")
-        print(f"Phone code: {self.__phone_code}")
+        print(f"Name: {self.__name}\nRegion: {self.__region}\nCountry: {self.__country}\nCity population: {self.__city_population}\nPostal code: {self.__postal_code}\nPhone code: {self.__phone_code} ")
 
 Odesa = City("Odesa", "Odesa City", "Ukraine", 1010000, 65000, 380)
 Odesa.show_info()
+print()
 
 # Завдання 2:
 # Створіть клас "Країна". Необхідно зберігати в полях класу: назву країни, назву континенту,
@@ -75,19 +71,20 @@ Odesa.show_info()
 # Реалізуйте доступ до окремих полів (Інкапсуляція).
 
 class Country:
-    __name_country: str = "no name"
-    __continent: str = "no continent"
-    __population: int = 0
-    __phone_code: int = 0
-    __capital: str = "no capital"
-    __cities: str = "no cities"
-    def __init__(self, name_country, continent, population, phone_code, capital, cities):
+    __name_country = "no name"
+    __continent = "no continent"
+    __population = 0
+    __phone_code = 0
+    __capital = "no capital"
+    __cities = list()
+
+    def __init__(self, name_country: str, continent: str, population: int, phone_code: int, capital: str, cities: list[City] = None):
         self.__name_country = name_country
         self.__continent = continent
         self.population = population
         self.__phone_code = phone_code
         self.__capital = capital
-        self.__cities = cities
+        self.cities = cities
 
     @property
     def name_country(self):
@@ -119,14 +116,25 @@ class Country:
             self.__population = population
         else:
             print("Incorrect number!")
-    def show_info(self):
-        print(f"Name: {self.__name_country} ")
-        print(f"Сontinent: {self.__continent}")
-        print(f"Population: {self.__population}")
-        print(f"Phone_code: {self.__phone_code}")
-        print(f"Capital: {self.__capital}")
-        print(f"Cities: {self.__cities}")
-Kyiv = City("Kyiv", "Kyiv City", "Ukraine", 2884000, 1000, 380)
-Ukraine = Country("Ukraine", "Eurasia", 37419084, 380, Kyiv, Odesa)
 
+    @cities.setter
+    def cities(self, cities):
+        if cities is not None:
+            self.__cities = cities
+        else:
+            print("Incorrect data!")
+
+    def show_info(self):
+        print(f"Name: {self.__name_country}\nСontinent: {self.__continent}\nPopulation: {self.__population}\nPhone_code: {self.__phone_code}\nCapital: {self.__capital}")
+        print("Cities:")
+        for city in self.__cities:
+            city.show_info()
+
+
+
+Kyiv = City("Kyiv", "Kyiv city", "Ukraine", 2884000, 1000, 380)
+Odesa = City("Odesa", "Odesa city", "Ukraine", 1010000, 65009, 380)
+
+cities = [Kyiv, Odesa]
+Ukraine = Country("Ukraine", "Eurasia", 37419084, 380, "Kyiv", cities)
 Ukraine.show_info()
